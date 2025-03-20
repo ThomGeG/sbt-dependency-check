@@ -127,6 +127,7 @@ object DependencyCheckPlugin extends sbt.AutoPlugin {
 
     // Advanced configuration
     dependencyCheckNvdApiKey := None,
+    dependencyCheckNvdApiDatafeedUrl := None,
     dependencyCheckNvdApiUser := None,
     dependencyCheckNvdApiPassword := None,
     dependencyCheckNvdApiStartYear := None,
@@ -304,6 +305,7 @@ object DependencyCheckPlugin extends sbt.AutoPlugin {
 
     // Advanced Configuration
     setStringSetting(NVD_API_KEY, dependencyCheckNvdApiKey.value)
+    setStringSetting(NVD_API_DATAFEED_URL, dependencyCheckNvdApiDatafeedUrl.value)
     setStringSetting(NVD_API_DATAFEED_USER, dependencyCheckNvdApiUser.value)
     setStringSetting(NVD_API_DATAFEED_PASSWORD, dependencyCheckNvdApiPassword.value)
     setIntSetting(NVD_API_DATAFEED_START_YEAR, dependencyCheckNvdApiStartYear.value.map(_.max(2002)))

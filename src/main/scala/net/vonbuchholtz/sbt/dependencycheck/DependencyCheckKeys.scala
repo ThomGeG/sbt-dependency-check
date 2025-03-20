@@ -106,6 +106,7 @@ trait DependencyCheckKeys {
 
 	// Advanced configuration
 	lazy val dependencyCheckNvdApiKey = settingKey[Option[String]]("The API key used when connecting to the NVD API.")
+	lazy val dependencyCheckNvdApiDatafeedUrl = settingKey[Option[String]]("The URL for the NVD API Data feed that can be generated using Vulnz")
 	lazy val dependencyCheckNvdApiUser = settingKey[Option[String]]("The username used when connecting to the NVD API.")
 	lazy val dependencyCheckNvdApiPassword = settingKey[Option[String]]("The password used when connecting to the NVD API.")
 	lazy val dependencyCheckNvdApiStartYear = settingKey[Option[Int]]("The first year of NVD CVE data to download from the NVD API.")
