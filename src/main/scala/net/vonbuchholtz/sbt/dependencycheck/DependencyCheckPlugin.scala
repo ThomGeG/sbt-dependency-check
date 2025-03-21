@@ -7,7 +7,7 @@ import org.owasp.dependencycheck.data.nexus.MavenArtifact
 import org.owasp.dependencycheck.dependency.naming.{GenericIdentifier, Identifier, PurlIdentifier}
 import org.owasp.dependencycheck.dependency.{Confidence, Dependency, EvidenceType}
 import org.owasp.dependencycheck.exception.ExceptionCollection
-import org.owasp.dependencycheck.utils.{Settings, SeverityUtil}
+import org.owasp.dependencycheck.utils.{Downloader, Settings, SeverityUtil}
 import org.owasp.dependencycheck.utils.Settings.KEYS.*
 import sbt.Keys.*
 import sbt.plugins.JvmPlugin
@@ -643,6 +643,7 @@ object DependencyCheckPlugin extends sbt.AutoPlugin {
     val oldClassLoader = Thread.currentThread().getContextClassLoader
     val newClassLoader = classOf[Engine].getClassLoader
     val engine: Engine = new Engine(newClassLoader, settings)
+    Downloader.getInstance.configure(settings)
     try {
       Thread.currentThread().setContextClassLoader(newClassLoader)
       fn(engine)
